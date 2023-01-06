@@ -287,7 +287,10 @@ PrintText::
 	ld [wTextBoxID], a
 	call DisplayTextBoxID
 	call UpdateSprites
-	call Delay3
+; VWF HAX
+	ld a, 3
+	rst $20 ; EnableVWF
+	;call Delay3
 	pop hl
 PrintText_NoCreatingTextBox::
 	bccoord 1, 14

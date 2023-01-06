@@ -2323,9 +2323,33 @@ wBoxMonNicksEnd::
 
 wBoxDataEnd::
 
+; VWF HAX
+SECTION "VWF", WRAM0
+
+wHackOldBank:: db
+wHackOldA:: db
+wHackPredef:: db
+wVWFLetterNum:: db
+wVWFCharacter:: db
+wVWFTileLoc1:: db
+wVWFTileLoc2:: db
+wVWFCurTileNum:: db
+wVWFCurTileCol:: db
+wVWFCurTileRow:: db
+wVWFNumTilesUsed:: db
+wVWFCharacterWidth:: db
+wVWFCurRow:: db
+wVWFEnabled:: db
+
+	ds 4
+
+wVWFBuildArea1:: ds 8
+wVWFBuildArea2:: ds 8
+wVWFBuildArea3:: ds 8
+wVWFBuildArea4:: ds 8
 
 SECTION "Stack", WRAM0
 
 ; the stack grows downward
-	ds $100 - 1
+	ds $e0 - 1
 wStack:: db

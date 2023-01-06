@@ -1,16 +1,14 @@
-# Pokémon Red and Blue [![Build Status][ci-badge]][ci]
+# Pokémon Red and Blue VWF
 
-This is a disassembly of Pokémon Red and Blue.
+Sanqui's VWF implementation ported to modern pokered. Incomplete.
 
-It builds the following ROMs:
+All credits go to @Sanqui.
 
-- Pokemon Red (UE) [S][!].gb `sha1: ea9bcae617fdf159b045185467ae58b2e4a48b9a`
-- Pokemon Blue (UE) [S][!].gb `sha1: d7037c83e1ae5b39bde3c30787637ba1d4c48ce2`
-- BLUEMONS.GB (debug build) `sha1: 5b1456177671b79b263c614ea0e7cc9ac542e9c4`
-- dmgapae0.e69.patch `sha1: 0fb5f743696adfe1dbb2e062111f08f9bc5a293a`
-- dmgapee0.e68.patch `sha1: ed4be94dc29c64271942c87f2157bca9ca1019c7`
+Sanqui's video showing the 2012 build: https://www.youtube.com/watch?v=xm7Iv4aKFGk
 
 To set up the repository, see [**INSTALL.md**](INSTALL.md).
+
+To see what's left to do, see [**TODO.md**](TODO.md).
 
 
 ## See also
@@ -44,5 +42,3 @@ Other disassembly projects:
 [symbols]: https://github.com/pret/pokered/tree/symbols
 [discord]: https://discord.gg/d5dubZ3
 [irc]: https://web.libera.chat/?#pret
-[ci]: https://github.com/pret/pokered/actions
-[ci-badge]: https://github.com/pret/pokered/actions/workflows/main.yml/badge.svg

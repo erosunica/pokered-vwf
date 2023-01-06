@@ -104,8 +104,12 @@ PlaceNextChar::
 	dict "<TARGET>",  PlaceMoveTargetsName
 	dict "<USER>",    PlaceMoveUsersName
 
-	ld [hli], a
-	call PrintLetterDelay
+; VWF HAX
+	;ld [hli], a
+	rst $18
+	ld a, 1
+	rst $20
+	;call PrintLetterDelay
 
 NextChar::
 	inc de
@@ -216,6 +220,10 @@ PromptText::
 
 DoneText::
 	pop hl
+; VWF HAX
+	ld a, 4
+	rst $20 ; DisableVWF
+	nop
 	ld de, .stop
 	dec de
 	ret
@@ -266,9 +274,19 @@ _ContText::
 	ldcoord_a 18, 16
 _ContTextNoPause::
 	push de
-	call ScrollTextUpOneLine
-	call ScrollTextUpOneLine
-	hlcoord 1, 16
+; VWF HAX SCROLL HANDLER
+	;ld hl, 
+	rst $18
+	ld a, 2
+	rst $20
+	nop
+	nop
+	nop
+	nop
+	nop
+	;call ScrollTextUpOneLine
+	;call ScrollTextUpOneLine
+	;hlcoord 1, 16
 	pop de
 	jp NextChar
 
@@ -311,6 +329,7 @@ ProtectedDelay3::
 TextCommandProcessor::
 	ld a, [wLetterPrintingDelayFlags]
 	push af
+	;rst $18 ; VWF HAX Save old A. This has to be done instead of the push.
 	set 1, a
 	ld e, a
 	ldh a, [hClearLetterPrintingDelayFlags]
@@ -326,6 +345,10 @@ NextTextCommand::
 	cp TX_END
 	jr nz, .TextCommand
 	pop af
+; VWF HAX comments
+	; nop ; We don't pop any more, so nop.
+	; ld a, 4
+	; rst $20 ; DisableVWF ; Not here...
 	ld [wLetterPrintingDelayFlags], a
 	ret
 

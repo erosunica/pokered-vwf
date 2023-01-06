@@ -11,12 +11,6 @@ ROM0
 	"rst18"
 	org $0020
 	"rst20"
-	org $0028
-	"rst28"
-	org $0030
-	"rst30"
-	org $0038
-	"rst38"
 	org $0040
 	"vblank"
 	org $0048
@@ -177,6 +171,8 @@ ROMX $2B
 	"Pokédex Text"
 ROMX $2C
 	"Move Names"
+ROMX $2D
+	"bank2D"
 WRAM0
 	"Audio RAM"
 	org $c100
@@ -188,7 +184,9 @@ WRAM0
 	"Party Data"
 	"Main Data"
 	"Current Box Data"
-	org $df00
+	org $deee
+	"VWF"
+	org $df20
 	"Stack"
 VRAM
 	"VRAM"

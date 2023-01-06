@@ -1,4 +1,4 @@
-; rst vectors (unused)
+; rst vectors
 
 SECTION "rst0", ROM0[$0000]
 	rst $38
@@ -15,28 +15,29 @@ SECTION "rst10", ROM0[$0010]
 
 	ds $18 - @, 0 ; unused
 
+; VWF HAX
 SECTION "rst18", ROM0[$0018]
-	rst $38
+	ld [wHackOldA], a
+	ret
 
 	ds $20 - @, 0 ; unused
 
+; VWF HAX
 SECTION "rst20", ROM0[$0020]
-	rst $38
+	ld [wHackPredef], a
+	ldh a, [hLoadedROMBank]
+	ld [wHackOldBank], a
+	ld a, BANK(HackPredef)
+	ld [MBC1RomBank], a
+	ldh [hLoadedROMBank], a
+	call HackPredef
+	ld a, [wHackOldBank]
+	ld [MBC1RomBank], a
+	ldh [hLoadedROMBank], a
+	ld a, [wHackOldA]
+	ret
 
-	ds $28 - @, 0 ; unused
-
-SECTION "rst28", ROM0[$0028]
-	rst $38
-
-	ds $30 - @, 0 ; unused
-
-SECTION "rst30", ROM0[$0030]
-	rst $38
-
-	ds $38 - @, 0 ; unused
-
-SECTION "rst38", ROM0[$0038]
-	rst $38
+; memory for rst vectors $28-$38 used by VWF hack
 
 	ds $40 - @, 0 ; unused
 
